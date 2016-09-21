@@ -35,7 +35,6 @@
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
 		7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */; };
-		7E59EDCF1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */; };
 		7E59EDD71D92A671002B61E3 /* DLSplashModuleConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
@@ -379,7 +378,6 @@
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
 				7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
-				7E59EDCF1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */,
 				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
