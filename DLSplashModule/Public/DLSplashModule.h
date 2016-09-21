@@ -10,6 +10,7 @@
 @import UIKit;
 #import "DLAdView.h"
 
+@class DLSplashModuleConfiguration;
 @class DLSplashAd;
 
 /**
@@ -21,6 +22,15 @@ Module responsible for providing ads for splash screen.
  Returns initialized object of class DLAdView. Each time it returns the same object.
  */
 @property (nonatomic, readonly) DLAdView *adView;
+
+/**
+ *  Initialize module with the configuration
+ *
+ *  @param configuration DLSplashModule configuration
+ *
+ *  @return Instance of initialized DLSplashModuleConfiguration
+ */
++ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.

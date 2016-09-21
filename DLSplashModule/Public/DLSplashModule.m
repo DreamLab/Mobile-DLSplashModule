@@ -7,19 +7,16 @@
 //
 
 #import "DLSplashModule.h"
+#import "DLSplashModuleConfiguration.h"
 #import "DLSplashModule+Internal.h"
 #import "DLSplashModuleDelegate.h"
 #import "DLSplashScreenWebService.h"
 #import "DLStore.h"
 
-static const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
 static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
 @interface DLSplashModule ()
-@property (nonatomic, strong) NSString *site;
-@property (nonatomic, strong) NSString *area;
-@property (nonatomic, strong) NSString *slot;
-
+@property (nonatomic, strong) DLSplashModuleConfiguration *configuration;
 @property (nonatomic, strong) NSMutableSet *delegates;
 @property (nonatomic, strong) NSTimer *displayTimer;
 @property (nonatomic, strong) NSTimer *waitingTimer;
@@ -35,6 +32,18 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
++ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration
+{
+    dispatch_once(&once, ^{
+        sharedInstance = [[self alloc] init];
+    });
+
+    sharedInstance.configuration = configuration;
+    [sharedInstance initializeSplashAd];
+
+    return sharedInstance;
+}
+
 + (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area
 {
     return [DLSplashModule initializeWithSite:site
@@ -46,16 +55,12 @@ static DLSplashModule* sharedInstance;
                               area:(NSString *)area
                               slot:(NSString *)slot
 {
-    dispatch_once(&once, ^{
-        sharedInstance = [[self alloc] init];
-    });
+    DLSplashModuleConfiguration *configuration = [[DLSplashModuleConfiguration alloc] init];
+    configuration.site = site;
+    configuration.area = area;
+    configuration.slot = slot;
 
-    sharedInstance.site = site;
-    sharedInstance.area = area;
-    sharedInstance.slot = slot;
-    [sharedInstance initializeSplashAd];
-
-    return sharedInstance;
+    return [DLSplashModule initializeWithConfiguration:configuration];
 }
 
 + (instancetype)sharedInstance
@@ -77,9 +82,9 @@ static DLSplashModule* sharedInstance;
 {
     DLStore *store = [[DLStore alloc] init];
 
-    self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.site
-                                                                area:self.area
-                                                                slot:self.slot];
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.configuration.site
+                                                                area:self.configuration.area
+                                                                slot:self.configuration.slot];
 
     [self fetchSplashAdWithWebService:self.webService store:store];
 }
@@ -173,8 +178,7 @@ static DLSplashModule* sharedInstance;
 #pragma mark - Timers
 - (void)waitingForDataStarted
 {
-    NSInteger waitingTime = kMaxTimeOfWaitingForContent;
-    self.waitingTimer = [NSTimer scheduledTimerWithTimeInterval:waitingTime
+    self.waitingTimer = [NSTimer scheduledTimerWithTimeInterval:self.configuration.maximumWaitingTimeForContent
                                                          target:self
                                                        selector:@selector(waitingForDataFinished)
                                                        userInfo:nil

@@ -34,6 +34,9 @@
 		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */; };
+		7E59EDCF1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */; };
+		7E59EDD71D92A671002B61E3 /* DLSplashModuleConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
 		8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8745298E1C7F179B00747C55 /* DLAdViewTests.m */; };
 		874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 71BAF10C1C7F703500D4BB7F /* DLAdView.h */; };
@@ -60,6 +63,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				7E59EDD71D92A671002B61E3 /* DLSplashModuleConfiguration.h in CopyFiles */,
 				874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */,
 				874529921C8072AB00747C55 /* DLAdViewDelegate.h in CopyFiles */,
 				874529931C8072AB00747C55 /* DLSplashModule.h in CopyFiles */,
@@ -90,6 +94,8 @@
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DLSplashModuleConfiguration.h; path = "../../../ios-splashmodule/DLSplashModule/Public/DLSplashModuleConfiguration.h"; sourceTree = "<group>"; };
+		7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DLSplashModuleConfiguration.m; path = "../../../ios-splashmodule/DLSplashModule/Public/DLSplashModuleConfiguration.m"; sourceTree = "<group>"; };
 		872C68D71C74BE44006064FD /* DLSplashModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModule.podspec; sourceTree = "<group>"; };
 		872C68D81C74BE44006064FD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		872C68D91C74BE44006064FD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -144,6 +150,8 @@
 				71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */,
 				71BAF10F1C7F703500D4BB7F /* DLSplashModule.h */,
 				71BAF1101C7F703500D4BB7F /* DLSplashModule.m */,
+				7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */,
+				7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -358,6 +366,7 @@
 				71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */,
+				7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +379,7 @@
 				87E8BD141C6DEDAD004C2EAD /* DLSplashModuleTests.m in Sources */,
 				7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */,
 				71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */,
+				7E59EDCF1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */,
 				710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
