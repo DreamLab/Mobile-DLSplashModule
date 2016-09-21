@@ -8,8 +8,8 @@
 
 #import "DLSplashModuleConfiguration.h"
 
-const NSTimeInterval kMaxTimeOfWaitingForContent = 3;
-NSString * kSplashScreenSlotDefaultParameter = @"slots=splash";
+NSTimeInterval const kMaxTimeOfWaitingForContent = 3;
+NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 
 @implementation DLSplashModuleConfiguration
 
