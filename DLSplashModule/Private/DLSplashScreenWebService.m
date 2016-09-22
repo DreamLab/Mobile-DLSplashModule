@@ -11,12 +11,11 @@
 @import AdSupport;
 
 #import "DLSplashScreenWebService.h"
+#import "DLSplashModuleConfiguration.h"
 #import "DLSplashAd.h"
 #import "DLStore.h"
 
 NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
-
-NSString * const kSplashScreenSlotDefaultParameter = @"slots=splash";
 
 @interface DLSplashScreenWebService ()
 

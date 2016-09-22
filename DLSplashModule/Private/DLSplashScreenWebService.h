@@ -10,8 +10,6 @@
 
 @class DLSplashAd;
 
-extern NSString * const kSplashScreenSlotDefaultParameter;
-
 /**
  *  Class to fetch data from server
  */
