@@ -9,6 +9,7 @@
 @import Foundation;
 @import UIKit;
 #import "DLAdView.h"
+#import "DLSplashModuleDelegate.h"
 
 @class DLSplashModuleConfiguration;
 @class DLSplashAd;
@@ -60,5 +61,12 @@ Module responsible for providing ads for splash screen.
  @return Instance of DLSplashModule or nil if not initialized
  */
 + (instancetype)sharedInstance;
+
+/**
+ Add delegate to the DLSplashModule.
+
+ @param delegate DLSplashModuleDelegate implementation
+ */
+- (void)addDelegate:(id<DLSplashModuleDelegate>)delegate;
 
 @end

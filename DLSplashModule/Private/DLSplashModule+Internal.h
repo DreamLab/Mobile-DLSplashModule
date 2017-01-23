@@ -32,13 +32,6 @@
 - (void)adViewDidDisplayImage:(DLAdView *)adView;
 
 /**
- Add delegate to the DLSplashModule.
-
- @param delegate DLSplashModuleDelegate implementation
- */
-- (void)addDelegate:(id<DLSplashModuleDelegate>)delegate;
-
-/**
  Remove delegate from the DLSplash module.
 
  @param delegate DLSplashModuleDelegate implementation
