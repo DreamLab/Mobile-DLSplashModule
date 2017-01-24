@@ -23,4 +23,6 @@
  Notifies that splash screen should be closed - time of displaying it passed.
  */
 - (void)splashScreenShouldBeClosed;
+
+
 @end
