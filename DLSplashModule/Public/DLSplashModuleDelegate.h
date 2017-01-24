@@ -24,5 +24,4 @@
  */
 - (void)splashScreenShouldBeClosed;
 
-
 @end
