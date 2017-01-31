@@ -107,7 +107,6 @@ static const NSInteger kMaxSizeOfImageView = 150;
 {
     if (!self.displayed) {
         self.displayed = YES;
-        [self.splashModule adViewDidShow:self];
     }
 }
 

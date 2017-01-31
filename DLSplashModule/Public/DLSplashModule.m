@@ -93,6 +93,9 @@ static DLSplashModule* sharedInstance;
 {
     DLSplashAd *cachedSplashAd = [store cachedSplashAd];
     self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
+
+    [self waitingForDataStarted];
+
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
@@ -215,11 +218,6 @@ static DLSplashModule* sharedInstance;
 }
 
 #pragma mark - Communication with ad view
-
-- (void)adViewDidShow:(DLAdView *)adView
-{
-    [self waitingForDataStarted];
-}
 
 - (void)adViewDidDisplayImage:(DLAdView *)adView
 {

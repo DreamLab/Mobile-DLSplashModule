@@ -18,13 +18,6 @@
 @property (nonatomic, strong, readonly) DLSplashAd *splashAd;
 
 /**
- Notifies DLSplashModule that ad view was displayed
-
- @param adView DLAdView that generated event.
- */
-- (void)adViewDidShow:(DLAdView *)adView;
-
-/**
  Notifies DLSplashModule that ad view displayed image
 
  @param adView DLAdView that generated event.
