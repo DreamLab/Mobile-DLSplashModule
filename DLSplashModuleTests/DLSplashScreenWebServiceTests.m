@@ -34,7 +34,7 @@
 - (void)setUp {
     [super setUp];
 
-    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"ver=1.0"];
 
     self.session = OCMClassMock([NSURLSession class]);
     OCMStub([self.session sharedSession]).andReturn(self.session);
@@ -48,24 +48,24 @@
 
 - (void)testInitWithSiteArea_givenProperParameters_instanceShouldNotBeNilAndURLisGeneratedProperly
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example"];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"ver=1.0"];
 
     XCTAssertNotNil(webService, @"webservice instance should not be nil");
 
-    NSRange range = [webService.url.absoluteString rangeOfString:@"https://csr.onet.pl/_s/csr-005/appsite_example/area_example/slots=splash/csr.json?DI="];
+    NSRange range = [webService.url.absoluteString rangeOfString:@"https://csr.onet.pl/_s/csr-005/appsite_example/area_example/slots=splash/ver=1.0/csr.json?DI="];
     XCTAssertTrue(range.length > 0, @"URL should be generated properly");
 }
 
 - (void)testInitWithSiteArea_givenNilAsParameters_instanceShouldBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:nil area:nil];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:nil area:nil appVersion:nil];
 
     XCTAssertNil(webService, @"webservice instance should be nil");
 }
 
 - (void)testInitWithSiteArea_givenEmptyStringAsParameters_instanceShouldBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@""];
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@"" appVersion:@""];
 
     XCTAssertNil(webService, @"webservice instance should be nil");
 }

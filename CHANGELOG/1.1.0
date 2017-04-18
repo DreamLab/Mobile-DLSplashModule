@@ -2,3 +2,5 @@
 
 Preventing race condition for DLSplashModuleDelegate call inside DLAdView causing ad image not being loaded.
 Always shared property "adView" from DLSplashModule class should be used inside application.
+
+Added application version as part of the url for Splash advertisement

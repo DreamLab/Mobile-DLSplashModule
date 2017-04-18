@@ -87,6 +87,7 @@ static DLSplashModule* sharedInstance;
 
     self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.configuration.site
                                                                 area:self.configuration.area
+                                                                appVersion:self.configuration.appVersion
                                                                 slot:self.configuration.slot];
 
     [self fetchSplashAdWithWebService:self.webService store:store];

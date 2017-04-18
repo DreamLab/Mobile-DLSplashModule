@@ -24,7 +24,7 @@
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice.
  */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
 
 /**
  *  Convenience initializer.
@@ -34,7 +34,7 @@
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice.
  */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area;
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion;
 
 /**
  *  Fetch data from server.

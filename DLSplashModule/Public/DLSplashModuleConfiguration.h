@@ -31,6 +31,11 @@ extern NSString * const kSplashScreenSlotDefaultParameter;
 @property (nonatomic, strong) NSString * slot;
 
 /**
+ *  The app version parameter
+ */
+@property (nonatomic, strong) NSString * appVersion;
+
+/**
  *  Maximum time of waiting for content
  */
 @property (nonatomic, assign) NSUInteger maximumWaitingTimeForContent;
