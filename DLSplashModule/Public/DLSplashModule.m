@@ -80,6 +80,9 @@ static DLSplashModule* sharedInstance;
 
 - (void)initializeSplashAd
 {
+    // Forces adview load and delegate (DLSplashModuleDelegate) set
+    _generatedAdView = [[DLAdView alloc] init];
+
     DLStore *store = [[DLStore alloc] init];
 
     self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.configuration.site
@@ -142,9 +145,6 @@ static DLSplashModule* sharedInstance;
 
 - (DLAdView *)adView
 {
-    if (!_generatedAdView) {
-        _generatedAdView = [[DLAdView alloc] init];
-    }
     return _generatedAdView;
 }
 
