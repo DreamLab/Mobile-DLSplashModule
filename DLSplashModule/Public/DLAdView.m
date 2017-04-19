@@ -70,6 +70,12 @@ static const NSInteger kMaxSizeOfImageView = 150;
     self.splashModule = DLSplashModule.sharedInstance;
     [self.splashModule addDelegate:self];
 
+    [self initializeViewHierarchy];
+    [self initializeGestureRecognizer];
+}
+
+- (void)initializeViewHierarchy
+{
     self.imageView = [[UIImageView alloc] initWithImage: nil];
     [self addSubview:self.imageView];
     self.imageView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -80,8 +86,6 @@ static const NSInteger kMaxSizeOfImageView = 150;
     self.heightConstraint = [NSLayoutConstraint constraintWithItem:self.imageView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1 constant:kMaxSizeOfImageView];
 
     [self addConstraints: @[centerXConstraint, topConstraint, self.widthConstraint, self.heightConstraint]];
-
-    [self initializeGestureRecognizer];
 }
 
 - (void)initializeGestureRecognizer
@@ -107,6 +111,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
 {
     if (!self.displayed) {
         self.displayed = YES;
+        [self.splashModule adViewDidShow:self];
     }
 }
 

@@ -15,7 +15,7 @@
 #import "DLSplashAd.h"
 #import "DLStore.h"
 
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/csr.json";
+NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/%@/csr.json";
 
 @interface DLSplashScreenWebService ()
 
@@ -25,22 +25,22 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion
 {
-    return [self initWithSite:site area:area slot:kSplashScreenSlotDefaultParameter];
+    return [self initWithSite:site area:area appVersion:appVersion slot:kSplashScreenSlotDefaultParameter];
 }
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot
+- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot
 {
     self = [super init];
 
-    if (!self || ![site length] || ![area length] || ![slot length]) {
+    if (!self || ![site length] || ![area length] || ![appVersion length] || ![slot length]) {
         return nil;
     }
 
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
 
-    NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot];
+    NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion];
     if (advertisingId && ![advertisingId isEqual:@""]) {
         urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
     }
