@@ -60,6 +60,7 @@
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -79,6 +80,7 @@
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -98,6 +100,7 @@
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -112,6 +115,7 @@
     OCMExpect([self.delegate splashScreenShouldBeClosed]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -131,6 +135,7 @@
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -145,6 +150,7 @@
     OCMExpect([self.delegate splashScreenShouldBeClosed]);
    [[self.store reject] cacheSplashAd:[OCMArg any]];
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
@@ -163,6 +169,7 @@
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
     [[self.store reject] cacheSplashAd:[OCMArg any]];
 
+    [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
 
     OCMVerifyAllWithDelay(self.delegate, 4);
