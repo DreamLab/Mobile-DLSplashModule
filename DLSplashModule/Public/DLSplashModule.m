@@ -44,20 +44,23 @@ static DLSplashModule* sharedInstance;
     return sharedInstance;
 }
 
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion
 {
     return [DLSplashModule initializeWithSite:site
                                          area:area
+                                         appVersion:appVersion
                                          slot:kSplashScreenSlotDefaultParameter];
 }
 
 + (instancetype)initializeWithSite:(NSString *)site
                               area:(NSString *)area
+                              appVersion:(NSString *)appVersion
                               slot:(NSString *)slot
 {
     DLSplashModuleConfiguration *configuration = [[DLSplashModuleConfiguration alloc] init];
     configuration.site = site;
     configuration.area = area;
+    configuration.appVersion = appVersion;
     configuration.slot = slot;
 
     return [DLSplashModule initializeWithConfiguration:configuration];
@@ -80,9 +83,6 @@ static DLSplashModule* sharedInstance;
 
 - (void)initializeSplashAd
 {
-    // Forces adview load and delegate (DLSplashModuleDelegate) set
-    _generatedAdView = [[DLAdView alloc] init];
-
     DLStore *store = [[DLStore alloc] init];
 
     self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.configuration.site
@@ -98,14 +98,9 @@ static DLSplashModule* sharedInstance;
     DLSplashAd *cachedSplashAd = [store cachedSplashAd];
     self.splashAd = cachedSplashAd.image ? cachedSplashAd : nil;
 
-    [self waitingForDataStarted];
-
     [webService fetchDataWithCompletion:^(DLSplashAd *splashAd, NSError *error) {
         if (error) {
             NSLog(@"Error occured: %@", error);
-            if (self.splashAd) {
-                [self waitingForDataFinished];
-            }
             return;
         }
 
@@ -113,7 +108,6 @@ static DLSplashModule* sharedInstance;
         if (splashAd.empty) {
             self.splashAd = nil;
             [store clearCache];
-            [self waitingForDataFinished];
             return;
         }
 
@@ -121,9 +115,6 @@ static DLSplashModule* sharedInstance;
             [webService fetchImageAtURL:splashAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
-                    if (self.splashAd) {
-                        [self waitingForDataFinished];
-                    }
                     return;
                 }
                 splashAd.image = image;
@@ -131,13 +122,11 @@ static DLSplashModule* sharedInstance;
                 [store clearCache];
                 [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
                 [store cacheSplashAd:splashAd];
-                [self waitingForDataFinished];
             }];
         } else {
             splashAd.image = self.splashAd.image;
             splashAd.imageFileName = self.splashAd.imageFileName;
             self.splashAd = splashAd;
-            [self waitingForDataFinished];
         }
 
         NSLog(@"Fetched splash ad: %@", splashAd);
@@ -146,6 +135,9 @@ static DLSplashModule* sharedInstance;
 
 - (DLAdView *)adView
 {
+    if (!_generatedAdView) {
+        _generatedAdView = [[DLAdView alloc] init];
+    }
     return _generatedAdView;
 }
 
@@ -219,6 +211,11 @@ static DLSplashModule* sharedInstance;
 }
 
 #pragma mark - Communication with ad view
+
+- (void)adViewDidShow:(DLAdView *)adView
+{
+    [self waitingForDataStarted];
+}
 
 - (void)adViewDidDisplayImage:(DLAdView *)adView
 {

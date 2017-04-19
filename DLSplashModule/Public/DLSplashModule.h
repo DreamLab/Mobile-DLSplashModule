@@ -36,23 +36,25 @@ Module responsible for providing ads for splash screen.
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site    the site URL parameter
- @param area    the area URL parameter
+ @param site        the site URL parameter
+ @param area        the area URL parameter
+ @param appVersion  the version number of the app
  
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area;
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion;
 
 /**
  *   Initializes module with the site, area and slots parameter. It initialize the shared instance. Should be called before first use.
  *
  *  @param site     the site URL parameter
  *  @param area     the area URL parameter
+ *  @param appVersion  the version number of the app
  *  @param slot     the slot URL parameter
  *
  *  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area slot:(NSString *)slot;
++ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 
