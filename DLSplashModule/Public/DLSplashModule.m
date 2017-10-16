@@ -123,11 +123,13 @@ static DLSplashModule* sharedInstance;
                 [store clearCache];
                 [store saveAdImageFromTemporaryLocation:imageLocation ofSplashAd:splashAd];
                 [store cacheSplashAd:splashAd];
+                [self waitingForDataFinished];
             }];
         } else {
             splashAd.image = self.splashAd.image;
             splashAd.imageFileName = self.splashAd.imageFileName;
             self.splashAd = splashAd;
+            [self waitingForDataFinished];
         }
 
         NSLog(@"Fetched splash ad: %@", splashAd);
