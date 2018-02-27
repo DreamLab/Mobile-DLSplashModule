@@ -1,0 +1,19 @@
+{
+    "adsCheck": "ok",
+    "geoloc": {
+        "R": 18,
+        "P": 31
+    },
+    "ads": [{
+            "id": "splash",
+            "meta": {
+            "server": "fa4"
+            },
+            "adid": "fa4,146337,448633",
+            "html": "{\n\"width\": 150,\n\"height\":95,\n\"txt\":\"Partner aplikacji\",\n\"time\": 3, \n\"audit\": \"https://csr.onet.pl/eclk/fa4,146337,448633/IP=2018022711490731808379381/IV=2018022711490731808379381/view?1519728547\",\n\"audit2\": \"https://csr.onet.pl/eclk/clk,5450,16749/screeny/?1519728547\",\n\"click\":\"http://csr.onet.pl/adclick/CID=146337/CCID=448633/IP=2018022711490731808379381/IV=2018022711490731808379381/CS=fa4/NID=1746213/S=APP_TV_IOS_TEST/A=SPLASH/SID=splash/AT=1519728547/UUID=7f4a32d053913b2fa60da6dca6136515/URL=http://www.piwniczanka.pl\",\n\"ver\":20180222131120\n}",
+            "slot": "splash",
+            "js": "",
+            "type": "std",
+            "prio": 10
+            }]
+}

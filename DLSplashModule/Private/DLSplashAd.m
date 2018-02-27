@@ -7,22 +7,11 @@
 //
 
 #import "DLSplashAd.h"
+#import "UIColor+Hex.h"
 
 NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.persiste_store";
 
 @implementation DLSplashAd
-
-- (instancetype)initWithJSONDictionary:(NSDictionary *)json
-{
-    self = [super init];
-    if (!self) {
-        return nil;
-    }
-
-    _json = json;
-
-    return (_json != nil ? self : nil);
-}
 
 - (instancetype)initWithJSONData:(NSData *)data
 {
@@ -31,54 +20,123 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     return [self initWithJSONDictionary:parsedJSON];
 }
 
-- (NSURL *)imageURL
+- (instancetype)initWithJSONDictionary:(NSDictionary *)json
 {
-    return [NSURL URLWithString:self.json[@"splash"][@"image"]];
+    // Check which response type we have
+    NSString *type = [DLSplashAd splashTypeFromJSON:json];
+    if (!type) {
+        return nil;
+    }
+
+    if ([type isEqualToString:@"tpl"]) {
+        return [self initWithTPLJSONDictionary:json];
+    }
+
+    if ([type isEqualToString:@"std"]) {
+        return [self initWithSTDJSONDictionary:json];
+    }
+
+    if ([type isEqualToString:@"empty"]) {
+        return [self initWithEmptyJSONDictionary:json];
+    }
+
+    return nil;
 }
 
-- (CGFloat)imageWidth
+- (instancetype)initWithTPLJSONDictionary:(NSDictionary *)json
 {
-    return [self.json[@"splash"][@"width"] doubleValue];
+    self = [super init];
+    if (!self || json == nil) {
+        return nil;
+    }
+
+    NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
+    if (!firstElement) {
+        return nil;
+    }
+
+    _imageURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"image"]];
+    _imageWidth = [firstElement[@"data"][@"meta"][@"width"] doubleValue];
+    _imageHeight = [firstElement[@"data"][@"meta"][@"height"] doubleValue];
+    _auditURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit"]];
+    _audit2URL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit2"]];
+
+    NSString *clickUrlString = [NSString stringWithFormat:@"%@%@",
+                                firstElement[@"data"][@"meta"][@"adclick"],
+                                firstElement[@"data"][@"fields"][@"click"]];
+    _clickURL = [NSURL URLWithString:clickUrlString];
+    _actionCountURL = [NSURL URLWithString:firstElement[@"data"][@"meta"][@"actioncount"]];
+
+    _version = firstElement[@"data"][@"meta"][@"ver"];
+    _text = firstElement[@"data"][@"fields"][@"txt"];
+    _time = [firstElement[@"data"][@"fields"][@"time"] integerValue];
+
+    NSString *textColor = firstElement[@"data"][@"fields"][@"font_color"];
+    _textColor = [UIColor colorFromHexString:textColor];
+
+    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version && _text && _time) {
+        _empty = false;
+    } else {
+        _empty = true;
+    }
+
+    _json = json;
+
+    return self;
 }
 
-- (CGFloat)imageHeight
+- (instancetype)initWithSTDJSONDictionary:(NSDictionary *)json
 {
-    return [self.json[@"splash"][@"height"] doubleValue];
+    self = [super init];
+    if (!self || json == nil) {
+        return nil;
+    }
+
+    NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
+    NSString *html = firstElement[@"html"];
+    if (!firstElement || !html) {
+        return nil;
+    }
+
+    NSData *htmlData = [html dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *htmlDictionary = [DLSplashAd parseJSONData:htmlData];
+    if (!htmlDictionary) {
+        return nil;
+    }
+
+    _imageURL = [NSURL URLWithString:htmlDictionary[@"image"]];
+    _imageWidth = [htmlDictionary[@"width"] doubleValue];
+    _imageHeight = [htmlDictionary[@"height"] doubleValue];
+    _auditURL = [NSURL URLWithString:htmlDictionary[@"audit"]];
+    _audit2URL = [NSURL URLWithString:htmlDictionary[@"audit2"]];
+    _clickURL = [NSURL URLWithString:htmlDictionary[@"click"]];
+    _text = htmlDictionary[@"txt"];
+    _time = [htmlDictionary[@"time"] doubleValue];
+    _textColor = nil;
+    _version = [NSString stringWithFormat:@"%@", htmlDictionary[@"ver"]];
+
+    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version && _text && _time) {
+        _empty = false;
+    } else {
+        _empty = true;
+    }
+
+    _json = json;
+
+    return self;
 }
 
-- (NSString *)text
+- (instancetype)initWithEmptyJSONDictionary:(NSDictionary *)json
 {
-    return self.json[@"splash"][@"txt"];
-}
+    self = [super init];
+    if (!self || json == nil) {
+        return nil;
+    }
 
-- (NSTimeInterval)time
-{
-    return [self.json[@"splash"][@"time"] doubleValue];
-}
+    _empty = true;
+    _json = json;
 
-- (NSURL *)auditURL
-{
-    return [NSURL URLWithString:self.json[@"splash"][@"audit"]];
-}
-
-- (NSURL *)audit2URL
-{
-    return [NSURL URLWithString:self.json[@"splash"][@"audit2"]];
-}
-
-- (NSURL *)clickURL
-{
-    return [NSURL URLWithString:self.json[@"splash"][@"click"]];
-}
-
-- (NSInteger)version
-{
-    return [self.json[@"splash"][@"ver"] intValue];
-}
-
-- (BOOL)empty
-{
-    return self.json[@"splash"] == nil;
+    return self;
 }
 
 #pragma mark - private methods
@@ -88,8 +146,8 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     if (!data) {
         return nil;
     }
-    NSError *parsingError = nil;
 
+    NSError *parsingError = nil;
     NSDictionary *bodyDictionary = [NSJSONSerialization JSONObjectWithData:data
                                                                    options:kNilOptions
                                                                      error:&parsingError];
@@ -100,6 +158,12 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     }
 
     return bodyDictionary;
+}
+
++ (NSString *)splashTypeFromJSON:(NSDictionary *)json {
+    NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
+
+    return firstElement[@"type"];
 }
 
 @end

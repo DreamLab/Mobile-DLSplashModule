@@ -17,7 +17,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 
 - (BOOL)saveAdImageFromTemporaryLocation:(NSURL *)temporaryLocation ofSplashAd:(DLSplashAd *)splashAd
 {
-    NSString *fileName = [NSString stringWithFormat:@"%ld", (long)splashAd.version];
+    NSString *fileName = [NSString stringWithFormat:@"%@", splashAd.version];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];

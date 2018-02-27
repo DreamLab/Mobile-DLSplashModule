@@ -87,7 +87,7 @@
 
 - (void)testCacheSplashAd_givenProperSplashAd_dataIsSavedToUserDefaults
 {
-    NSData *jsonData = [DLTestingHelper dataFromJSONFileNamed:@"CorrectJsonData"];
+    NSData *jsonData = [DLTestingHelper dataFromJSONFileNamed:@"std"];
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:jsonData];
     [self.store cacheSplashAd:splashAd];
 
@@ -103,7 +103,7 @@
 
 - (void)testCachedSplashAd_methodInvoked_nsUserDefaultsShouldBeUsed
 {
-    NSData *jsonData = [DLTestingHelper dataFromJSONFileNamed:@"CorrectJsonData"];
+    NSData *jsonData = [DLTestingHelper dataFromJSONFileNamed:@"std"];
     NSError *parsingError;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&parsingError];
     XCTAssertNil(parsingError, @"Parsing error should be nil");

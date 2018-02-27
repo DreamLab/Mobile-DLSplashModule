@@ -38,17 +38,19 @@ Add #import statement in your AppDelegate:
 
 In application:didFinishLaunchingWithOptions: method of your AppDelegate add following method to initialize `DLSplashModule`:
 ```
-[DLSplashModule initializeWithSite:<SITE_PARAMETER> area:<AREA_PARAMETER> slot:<SLOT_PARAMETER>];
+[DLSplashModule initializeWithSite:<SITE_PARAMETER> area:<AREA_PARAMETER> appVersion:<APP_VERSION_PARAMETER> slot:<SLOT_PARAMETER>];
 ```
 As `<SITE_PARAMETER>` insert your Site Identifier.
 
 As `<AREA_PARAMETER>` insert your Area Identifier.
 
-As `<SLOT_PARAMETER>` insert your Area Identifier.
+As `<APP_VERSION_PARAMETER>` insert your app version.
+
+As `<SLOT_PARAMETER>` insert your Slot Identifier.
 
 Or you can use more convenience initializer:
 ```
-[DLSplashModule initializeWithSite:<SITE_PARAMETER> area:<AREA_PARAMETER>];
+[DLSplashModule initializeWithSite:<SITE_PARAMETER> appVersion:<APP_VERSION_PARAMETER>];
 ```
 
 ### Step 2. Create and set delegate
@@ -77,11 +79,11 @@ You need to implement methods of `DLAdViewDelegate` to be notified and react on 
 ```
 // Method is called when user taps on the DLAdView.
 // You can open webview with given URL here.
-(void)adView:(DLAdView *)adView didTapImageWithUrl:(NSURL *)url;
- 
+- (void)adView:(DLAdView * _Nonnull)adView didTapImageWithUrl:(NSURL * _Nonnull)url;
+
 // Method is called when DLAdView fulfill the content of the ad.
-(void)adView:(DLAdView *)adView didDisplayAdWithAssociatedText:(NSString *)associatedText;
- 
+- (void)adView:(DLAdView * _Nonnull)adView didDisplayAdWithAssociatedText:(NSString * _Nonnull)associatedText andColor:(UIColor * _Nullable)textColor;
+
 // Notifies that splash screen should be closed - time of displaying it passed.
 (void)splashScreenShouldBeClosed;
 ```

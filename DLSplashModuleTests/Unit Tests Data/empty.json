@@ -1,0 +1,13 @@
+{
+    "adsCheck": "ok",
+    "geoloc": {
+        "P": 31,
+        "R": 18
+    },
+    "ads": [{
+            "slot": "splash",
+            "prio": 10,
+            "id": "splash",
+            "type": "empty"
+            }]
+}

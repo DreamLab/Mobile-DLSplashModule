@@ -8,7 +8,8 @@
 
 @import Foundation;
 
-extern NSString * const kSplashScreenSlotDefaultParameter;
+extern NSString * const kSplashScreenDefaultArea;
+extern NSString * const kSplashScreenDefaultSlot;
 
 /**
  *  Configuration object form DLSplashModule

@@ -71,7 +71,7 @@
 {
     DLSplashAd *splashAd = OCMClassMock([DLSplashAd class]);
     OCMStub([splashAd image]).andReturn(OCMClassMock([UIImage class]));
-    OCMStub([splashAd version]).andReturn(1);
+    OCMStub([splashAd version]).andReturn(OCMClassMock([NSString class]));
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
@@ -91,7 +91,7 @@
 {
     DLSplashAd *splashAd = OCMClassMock([DLSplashAd class]);
     OCMStub([splashAd image]).andReturn(OCMClassMock([UIImage class]));
-    OCMStub([splashAd version]).andReturn(1);
+    OCMStub([splashAd version]).andReturn(OCMClassMock([NSString class]));
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:[NSNull null], OCMClassMock([NSError class]), nil])]);
@@ -126,7 +126,7 @@
 {
     DLSplashAd *splashAd = OCMClassMock([DLSplashAd class]);
     OCMStub([splashAd image]).andReturn(OCMClassMock([UIImage class]));
-    OCMStub([splashAd version]).andReturn(1);
+    OCMStub([splashAd version]).andReturn(OCMClassMock([NSString class]));
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:OCMClassMock([DLSplashAd class]), [NSNull null], nil])]);
@@ -160,7 +160,7 @@
 {
     DLSplashAd *splashAd = OCMClassMock([DLSplashAd class]);
     OCMStub([splashAd image]).andReturn(OCMClassMock([UIImage class]));
-    OCMStub([splashAd version]).andReturn(1);
+    OCMStub([splashAd version]).andReturn(OCMClassMock([NSString class]));
 
     OCMStub([self.store cachedSplashAd]).andReturn(splashAd);
     OCMStub([self.webService fetchDataWithCompletion:([OCMArg invokeBlockWithArgs:splashAd, [NSNull null], nil])]);

@@ -15,7 +15,7 @@
 #import "DLSplashAd.h"
 #import "DLStore.h"
 
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%@/%@/csr.json";
+NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.json?site=%@&area=%@&slot0=%@&ver=%@";
 
 @interface DLSplashScreenWebService ()
 
@@ -25,11 +25,6 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion
-{
-    return [self initWithSite:site area:area appVersion:appVersion slot:kSplashScreenSlotDefaultParameter];
-}
-
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot
 {
     self = [super init];
@@ -38,14 +33,21 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%
         return nil;
     }
 
-    NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
+    // Base url with params
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion];
 
-    NSString *urlString = [NSString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion];
+    // Apppend csr keyword
+    [urlString appendString:@"&kvkwrd=cs006r"];
+
+    // Append advertising id
+    NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
     if (advertisingId && ![advertisingId isEqual:@""]) {
-        urlString = [NSString stringWithFormat:@"%@?DI=%@", urlString, advertisingId];
+        NSString *advertisingParam = [NSString stringWithFormat:@"&DI=%@&ppid=%@", advertisingId, advertisingId];
+        [urlString appendString:advertisingParam];
     }
 
     _url = [NSURL URLWithString:urlString];
+
     return self;
 }
 
@@ -109,6 +111,9 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-005/%@/%@/%
     }
     if (splashAd.audit2URL) {
         [store queueTrackingLink:splashAd.audit2URL];
+    }
+    if (splashAd.actionCountURL) {
+        [store queueTrackingLink:splashAd.actionCountURL];
     }
 
     if ([store areAnyTrackingLinksQueued]) {

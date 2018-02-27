@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name            = 'DLSplashModuleCode'
-  s.version         = '0.0.0'
-  s.platform        = :ios, "7.0"
+  s.version         = '1.2.100'
+  s.platform        = :ios, '9.0'
   s.summary         = 'Module to provide Ad for splash screen.'
   s.author          = { 'Konrad Kierys' => 'konrad.kierys@asideas.de','Jacek Zapart' => 'jacek.zapart@asideas.de' }
   s.homepage        = 'http://stash.grupa.onet/projects/MSC/repos/dlsplashmodule'
