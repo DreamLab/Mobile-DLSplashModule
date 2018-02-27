@@ -88,7 +88,7 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertNotNil(splashAd.auditURL, @"SplashAd auditURL should not be nil");
-    NSURL *testURL = [NSURL URLWithString:@"http://csr.onet.pl/eclk/fa4,125202,255484/view?1455617456"];
+    NSURL *testURL = [NSURL URLWithString:@"https://csr.onet.pl/eclk/fa4,146337,448633/IP=2018022711490731808379381/IV=2018022711490731808379381/view?1519728547"];
     XCTAssertEqualObjects(splashAd.auditURL, testURL, @"SplashAd auditURL should be correct");
 }
 
@@ -113,8 +113,9 @@
 - (void)testInitWithJSONData_givenCorrectJSONData_versionIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
+    BOOL isVersionCorrect = [splashAd.version isEqualToString:@"20180222131120"];
 
-    XCTAssertEqual(splashAd.version, @"20180222131120", @"SplashAd version should be correct");
+    XCTAssertTrue(isVersionCorrect, @"SplashAd version should be correct");
 }
 
 - (void)testInitWithJSONData_givenCorruptedJSONData_splashAdShouldBeNil

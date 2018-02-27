@@ -86,7 +86,7 @@
 
 - (void)testTrackForSplashAd_givenProperSplashAd_performSessionDataTaskForURLShouldBeCalled
 {
-    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:[DLTestingHelper dataFromJSONFileNamed:@"CorrectJsonData"]];
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:[DLTestingHelper dataFromJSONFileNamed:@"std"]];
 
     id partialMockedWebService = OCMPartialMock(self.webService);
     OCMExpect([partialMockedWebService performSessionDownloadTaskForURL:splashAd.auditURL]);
