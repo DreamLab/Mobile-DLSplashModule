@@ -62,6 +62,11 @@ static const NSInteger kMaxSizeOfImageView = 150;
     return self.splashAd.text;
 }
 
+- (UIColor *)associatedTextColor
+{
+    return self.splashAd.textColor;
+}
+
 #pragma mark - Private Initializers
 
 - (void)initialize
@@ -133,7 +138,7 @@ static const NSInteger kMaxSizeOfImageView = 150;
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.widthConstraint.constant = splashAd.imageWidth;
     self.heightConstraint.constant = splashAd.imageHeight;
-    [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText];
+    [self.delegate adView:self didDisplayAdWithAssociatedText:self.associatedText andColor:self.associatedTextColor];
     [self.splashModule adViewDidDisplayImage:self];
 }
 
