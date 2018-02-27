@@ -42,7 +42,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
     // Append advertising id
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
     if (advertisingId && ![advertisingId isEqual:@""]) {
-        NSString *advertisingParam = [NSString stringWithFormat:@"&DI=%@", advertisingId];
+        NSString *advertisingParam = [NSString stringWithFormat:@"&DI=%@&ppid=%@", advertisingId, advertisingId];
         [urlString appendString:advertisingParam];
     }
 
