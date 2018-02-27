@@ -1,0 +1,42 @@
+{
+    "geoloc": {
+        "P": 31,
+        "R": 18
+    },
+    "ads": [{
+            "meta": {
+            "eligible": false,
+            "server": "das"
+            },
+            "adid": "das,18121,43181",
+            "prio": 10,
+            "type": "tpl",
+            "data": {
+            "meta": {
+            "adid": "das,18121,43181",
+            "height": 95,
+            "container_wrapper": "",
+            "actioncount": "https://csr.onet.pl/eclk/das,18121,43181/IP=2018022712474201633392831/IV=2018022712474201633392831/",
+            "width": 150,
+            "inIFrame": true,
+            "adclick": "http://csr.onet.pl/adclick/CID=18121/CCID=43181/DID=10261/IP=2018022712474201633392831/IV=2018022712474201633392831/CS=das/NID=1746213/S=APP_TV_IOS_TEST/A=SPLASH/SID=splash/AT=1519732062/UUID=a51b943ea5c73104a9a250617b44c8fd/URL=",
+            "ver": "20180227120249",
+            "slot": "splash"
+            },
+            "tplCode": "lps/Splash-Aplikacji",
+            "fields": {
+            "audit2": "https://csr.onet.pl/eclk/clk,5450,16749/iOS_PTV_splash_2/?1519732062",
+            "font_color": "#91a21a",
+            "time": "4",
+            "click": "http://www.piwniczanka.pl",
+            "txt": "PARTNER  \u0105\u017a\u0107\u00f3\u0142 aplikacji",
+            "audit": "https://csr.onet.pl/eclk/clk,5450,16749/iOS_PTV_splash_1/?1519732062"
+            }
+            },
+            "width": 150,
+            "height": 95,
+            "slot": "splash",
+            "id": "splash"
+            }],
+    "adsCheck": "ok"
+}

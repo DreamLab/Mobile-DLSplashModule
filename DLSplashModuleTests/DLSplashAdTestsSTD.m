@@ -1,5 +1,5 @@
 //
-//  DLSplashAdTests.m
+//  DLSplashAdTestsSTD.m
 //  DLSplashModule
 //
 //  Created by Konrad Kierys on 15.02.2016.
@@ -10,7 +10,7 @@
 #import "DLTestingHelper.h"
 #import "DLSplashAd.h"
 
-@interface DLSplashAdTests : XCTestCase
+@interface DLSplashAdTestsSTD : XCTestCase
 
 @property (nonatomic, strong) NSData *correctJSONData;
 @property (nonatomic, strong) NSData *wrongJSONData;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation DLSplashAdTests
+@implementation DLSplashAdTestsSTD
 
 - (void)setUp
 {
