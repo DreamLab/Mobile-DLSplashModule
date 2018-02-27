@@ -46,6 +46,11 @@
 @property (nonatomic, assign, readonly) NSTimeInterval time;
 
 /**
+    Ad text color
+ */
+@property (nonatomic, strong, readonly) UIColor *textColor;
+
+/**
  *  URL to audit
  */
 @property (nonatomic, strong, readonly) NSURL *auditURL;
@@ -63,7 +68,7 @@
 /**
  *  Version of campain
  */
-@property (nonatomic, assign, readonly) NSInteger version;
+@property (nonatomic, strong, readonly) NSString *version;
 
 /**
  *  JSON of Splash Ad.
