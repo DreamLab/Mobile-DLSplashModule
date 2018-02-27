@@ -44,12 +44,20 @@ static DLSplashModule* sharedInstance;
     return sharedInstance;
 }
 
++ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion
+{
+    return [DLSplashModule initializeWithSite:site
+                                         area:kSplashScreenDefaultArea
+                                   appVersion:appVersion
+                                         slot:kSplashScreenDefaultSlot];
+}
+
 + (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion
 {
     return [DLSplashModule initializeWithSite:site
                                          area:area
                                          appVersion:appVersion
-                                         slot:kSplashScreenSlotDefaultParameter];
+                                         slot:kSplashScreenDefaultSlot];
 }
 
 + (instancetype)initializeWithSite:(NSString *)site

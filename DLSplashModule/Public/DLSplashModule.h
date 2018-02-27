@@ -37,6 +37,16 @@ Module responsible for providing ads for splash screen.
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
  @param site        the site URL parameter
+ @param appVersion  the version number of the app
+
+ @return Instance of initialized DLSplashModule
+ */
++ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
+
+/**
+ Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
+
+ @param site        the site URL parameter
  @param area        the area URL parameter
  @param appVersion  the version number of the app
  

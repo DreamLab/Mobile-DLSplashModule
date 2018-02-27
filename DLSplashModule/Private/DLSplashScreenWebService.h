@@ -27,16 +27,6 @@
 - (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
 
 /**
- *  Convenience initializer.
- *
- *  @param site Site URL parameter.
- *  @param area Area URL parameter.
- *
- *  @return Instance of DLSplashScreenWebService with URL to webservice.
- */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion;
-
-/**
  *  Fetch data from server.
  *
  *  @param completion Block with DLSplashAd and NSError as result of fetching data
