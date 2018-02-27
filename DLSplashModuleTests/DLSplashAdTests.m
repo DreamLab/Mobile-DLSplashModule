@@ -24,9 +24,9 @@
 {
     [super setUp];
 
-    self.correctJSONData = [DLTestingHelper dataFromJSONFileNamed:@"CorrectJsonData"];
-    self.wrongJSONData = [DLTestingHelper dataFromJSONFileNamed:@"WrongJsonData"];
-    self.emptyJSONData = [DLTestingHelper dataFromJSONFileNamed:@"EmptyJsonData"];
+    self.correctJSONData = [DLTestingHelper dataFromJSONFileNamed:@"std"];
+    self.wrongJSONData = [DLTestingHelper dataFromJSONFileNamed:@"std_wrong"];
+    self.emptyJSONData = [DLTestingHelper dataFromJSONFileNamed:@"empty"];
 }
 
 - (void)tearDown
@@ -50,7 +50,7 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertNotNil(splashAd.imageURL, @"SplashAd ImageURL should not be nil");
-    NSURL *testURL = [NSURL URLWithString:@"http://ocdn.eu/images/mastt/MTc7MDA_/b1f3414c51e4d27c5266ec3f490e7662.png"];
+    NSURL *testURL = [NSURL URLWithString:@"https://ocdn.eu/lps/tmp/20180125_153733_jmanijak_6/300x150_splash_aplikacji.jpg"];
     XCTAssertEqualObjects(splashAd.imageURL, testURL, @"SplashAd ImageURL should be correct");
 }
 
@@ -58,14 +58,14 @@
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.imageWidth, 90, @"SplashAd imageWidth should be correct");
+    XCTAssertEqual(splashAd.imageWidth, 150, @"SplashAd imageWidth should be correct");
 }
 
 - (void)testInitWithJSONData_givenCorrectJSONData_imageHeightIsCorrect
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.imageHeight, 60, @"SplashAd imageHeight should be correct");
+    XCTAssertEqual(splashAd.imageHeight, 95, @"SplashAd imageHeight should be correct");
 }
 
 - (void)testInitWithJSONData_givenCorrectJSONData_adTextIsNotNilAndCorrect
@@ -80,7 +80,7 @@
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.time, 5, @"SplashAd time should be correct");
+    XCTAssertEqual(splashAd.time, 3, @"SplashAd time should be correct");
 }
 
 - (void)testInitWithJSONData_givenCorrectJSONData_auditUrlIsNotNilAndCorrect
@@ -97,7 +97,7 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertNotNil(splashAd.audit2URL, @"SplashAd audit2URL should not be nil");
-    NSURL *testURL = [NSURL URLWithString:@"http://e.clk.onet.pl/clk,5450,16749/view/"];
+    NSURL *testURL = [NSURL URLWithString:@"https://csr.onet.pl/eclk/clk,5450,16749/screeny/?1519728547"];
     XCTAssertEqualObjects(splashAd.audit2URL, testURL, @"SplashAd audit2URL should be correct");
 }
 
@@ -106,7 +106,7 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
     XCTAssertNotNil(splashAd.clickURL, @"SplashAd clickURL should not be nil");
-    NSURL *testURL = [NSURL URLWithString:@"http://csr.onet.pl/adclick/CID=125202/CCID=255484/CT=str/URL=http://m.onet.pl"];
+    NSURL *testURL = [NSURL URLWithString:@"http://csr.onet.pl/adclick/CID=146337/CCID=448633/IP=2018022711490731808379381/IV=2018022711490731808379381/CS=fa4/NID=1746213/S=APP_TV_IOS_TEST/A=SPLASH/SID=splash/AT=1519728547/UUID=7f4a32d053913b2fa60da6dca6136515/URL=http://www.piwniczanka.pl"];
     XCTAssertEqualObjects(splashAd.clickURL, testURL, @"SplashAd clickURL should be correct");
 }
 
@@ -114,14 +114,14 @@
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.correctJSONData];
 
-    XCTAssertEqual(splashAd.version, 1234512, @"SplashAd version should be correct");
+    XCTAssertEqual(splashAd.version, @"20180222131120", @"SplashAd version should be correct");
 }
 
 - (void)testInitWithJSONData_givenCorruptedJSONData_splashAdShouldBeNil
 {
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.wrongJSONData];
 
-    XCTAssertNil(splashAd, @"Splash Ad should be nil");
+    XCTAssertTrue(splashAd.empty, @"Splash Ad should be empty");
 }
 
 - (void)testInitWithJSONData_givenEmptyJSONData_splashAdEmptyPropertyIsTrue

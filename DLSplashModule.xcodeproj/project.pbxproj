@@ -29,11 +29,12 @@
 		71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10A1C7F703500D4BB7F /* DLStore.m */; };
 		71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF10D1C7F703500D4BB7F /* DLAdView.m */; };
 		71BAF1151C7F703500D4BB7F /* DLSplashModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1101C7F703500D4BB7F /* DLSplashModule.m */; };
-		71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B11C734F1200CF6981 /* CorrectJsonData.json */; };
-		71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B21C734F1200CF6981 /* EmptyJsonData.json */; };
-		71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* WrongJsonData.json */; };
+		71C020B61C734F1200CF6981 /* std_wrong.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* std_wrong.json */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTests.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		7D2EA5D8204571FE006AE523 /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D2EA5D6204571FE006AE523 /* empty.json */; };
+		7D2EA5D9204571FE006AE523 /* std.json in Resources */ = {isa = PBXBuildFile; fileRef = 7D2EA5D7204571FE006AE523 /* std.json */; };
+		7DE741A620457ACD00E65803 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE741A520457ACD00E65803 /* UIColor+Hex.m */; };
 		7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */; };
 		7E59EDD71D92A671002B61E3 /* DLSplashModuleConfiguration.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */; };
 		8745298B1C7DB92000747C55 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8745297C1C7DB8DD00747C55 /* libOCMock.a */; };
@@ -88,13 +89,16 @@
 		71BAF10E1C7F703500D4BB7F /* DLAdViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLAdViewDelegate.h; sourceTree = "<group>"; };
 		71BAF10F1C7F703500D4BB7F /* DLSplashModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModule.h; sourceTree = "<group>"; };
 		71BAF1101C7F703500D4BB7F /* DLSplashModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashModule.m; sourceTree = "<group>"; };
-		71C020B11C734F1200CF6981 /* CorrectJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = CorrectJsonData.json; path = "Unit Tests Data/CorrectJsonData.json"; sourceTree = "<group>"; };
-		71C020B21C734F1200CF6981 /* EmptyJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = EmptyJsonData.json; path = "Unit Tests Data/EmptyJsonData.json"; sourceTree = "<group>"; };
-		71C020B31C734F1200CF6981 /* WrongJsonData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = WrongJsonData.json; path = "Unit Tests Data/WrongJsonData.json"; sourceTree = "<group>"; };
+		71C020B31C734F1200CF6981 /* std_wrong.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = std_wrong.json; path = "Unit Tests Data/std_wrong.json"; sourceTree = "<group>"; };
 		71F841B01C723770003CF0E4 /* DLSplashAdTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashAdTests.m; sourceTree = "<group>"; };
 		71F841B31C723A57003CF0E4 /* DLTestingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLTestingHelper.h; sourceTree = "<group>"; };
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
+		7D2EA5D520457144006AE523 /* DLSplashModuleCode.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModuleCode.podspec; sourceTree = "<group>"; };
+		7D2EA5D6204571FE006AE523 /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		7D2EA5D7204571FE006AE523 /* std.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = std.json; sourceTree = "<group>"; };
 		7D458A8F1EA6197C004A43BC /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CHANGELOG; sourceTree = "<group>"; };
+		7DE741A420457ACD00E65803 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		7DE741A520457ACD00E65803 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashModuleConfiguration.h; sourceTree = "<group>"; };
 		7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashModuleConfiguration.m; sourceTree = "<group>"; };
 		872C68D71C74BE44006064FD /* DLSplashModule.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModule.podspec; sourceTree = "<group>"; };
@@ -139,6 +143,8 @@
 				71BAF1081C7F703500D4BB7F /* DLSplashScreenWebService.m */,
 				71BAF1091C7F703500D4BB7F /* DLStore.h */,
 				71BAF10A1C7F703500D4BB7F /* DLStore.m */,
+				7DE741A420457ACD00E65803 /* UIColor+Hex.h */,
+				7DE741A520457ACD00E65803 /* UIColor+Hex.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -161,9 +167,9 @@
 		71C020B01C734ECF00CF6981 /* Unit Tests Data */ = {
 			isa = PBXGroup;
 			children = (
-				71C020B11C734F1200CF6981 /* CorrectJsonData.json */,
-				71C020B21C734F1200CF6981 /* EmptyJsonData.json */,
-				71C020B31C734F1200CF6981 /* WrongJsonData.json */,
+				7D2EA5D6204571FE006AE523 /* empty.json */,
+				7D2EA5D7204571FE006AE523 /* std.json */,
+				71C020B31C734F1200CF6981 /* std_wrong.json */,
 			);
 			name = "Unit Tests Data";
 			sourceTree = "<group>";
@@ -181,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				7D458A8F1EA6197C004A43BC /* CHANGELOG */,
+				7D2EA5D520457144006AE523 /* DLSplashModuleCode.podspec */,
 				872C68D71C74BE44006064FD /* DLSplashModule.podspec */,
 				872C68D81C74BE44006064FD /* LICENSE */,
 				872C68D91C74BE44006064FD /* README.md */,
@@ -322,9 +329,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C020B61C734F1200CF6981 /* WrongJsonData.json in Resources */,
-				71C020B41C734F1200CF6981 /* CorrectJsonData.json in Resources */,
-				71C020B51C734F1200CF6981 /* EmptyJsonData.json in Resources */,
+				71C020B61C734F1200CF6981 /* std_wrong.json in Resources */,
+				7D2EA5D8204571FE006AE523 /* empty.json in Resources */,
+				7D2EA5D9204571FE006AE523 /* std.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +375,7 @@
 				71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */,
 				71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */,
+				7DE741A620457ACD00E65803 /* UIColor+Hex.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */,
 				7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */,
 			);

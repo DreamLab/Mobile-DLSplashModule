@@ -42,7 +42,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
     // Append advertising id
     NSString *advertisingId = [ASIdentifierManager sharedManager].advertisingIdentifier.UUIDString;
     if (advertisingId && ![advertisingId isEqual:@""]) {
-        NSString *advertisingParam = [NSString stringWithFormat:@"&DI=%@&ppid=%@", advertisingId, advertisingId];
+        NSString *advertisingParam = [NSString stringWithFormat:@"&DI=%@", advertisingId];
         [urlString appendString:advertisingParam];
     }
 
@@ -111,6 +111,9 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
     }
     if (splashAd.audit2URL) {
         [store queueTrackingLink:splashAd.audit2URL];
+    }
+    if (splashAd.actionCountURL) {
+        [store queueTrackingLink:splashAd.actionCountURL];
     }
 
     if ([store areAnyTrackingLinksQueued]) {
