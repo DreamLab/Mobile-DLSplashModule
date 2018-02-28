@@ -35,7 +35,10 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (void)cacheSplashAd:(DLSplashAd *)splashAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:splashAd.json forKey:kDLSplashAdJSONCacheKey];
+
+    NSData *splashData = [NSKeyedArchiver archivedDataWithRootObject:splashAd.json];
+
+    [userDefaults setObject:splashData forKey:kDLSplashAdJSONCacheKey];
     [userDefaults setObject:splashAd.imageFileName forKey:kDLSplashAdImageFileNameCacheKey];
     [userDefaults synchronize];
 }
@@ -43,7 +46,10 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (DLSplashAd *)cachedSplashAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    NSDictionary *json = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
+
+    NSData *splashData = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
+    NSDictionary *json = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:splashData];
+
     NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
 
     DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
