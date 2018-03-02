@@ -11,6 +11,13 @@
 
 NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.persiste_store";
 
+@interface DLSplashAd ()
+
+// Only tpl type:
+@property (nonatomic, strong, readwrite) NSString *actionCount;
+
+@end
+
 @implementation DLSplashAd
 
 - (instancetype)initWithJSONData:(NSData *)data
@@ -65,7 +72,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
                                 firstElement[@"data"][@"meta"][@"adclick"],
                                 firstElement[@"data"][@"fields"][@"click"]];
     _clickURL = [NSURL URLWithString:clickUrlString];
-    _actionCountURL = [NSURL URLWithString:firstElement[@"data"][@"meta"][@"actioncount"]];
+    _actionCount = firstElement[@"data"][@"meta"][@"actioncount"];
 
     _version = firstElement[@"data"][@"meta"][@"ver"];
     _text = firstElement[@"data"][@"fields"][@"txt"];
@@ -137,6 +144,20 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     _json = json;
 
     return self;
+}
+
+#pragma mark - getters
+
+- (NSURL *)actionCountURL
+{
+    if (!self.actionCount) {
+        return nil;
+    }
+
+    NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
+    NSString *actionCountUrlString = [NSString stringWithFormat:@"%@view?%f", self.actionCount, timeStamp];
+
+    return [NSURL URLWithString:actionCountUrlString];
 }
 
 #pragma mark - private methods
