@@ -150,12 +150,12 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
 
 - (NSURL *)actionCountURL
 {
-    if (!_actionCount) {
+    if (!self.actionCount) {
         return nil;
     }
 
     NSTimeInterval timeStamp = [[NSDate date] timeIntervalSince1970];
-    NSString *actionCountUrlString = [NSString stringWithFormat:@"%@view?%f", _actionCount, timeStamp];
+    NSString *actionCountUrlString = [NSString stringWithFormat:@"%@view?%f", self.actionCount, timeStamp];
 
     return [NSURL URLWithString:actionCountUrlString];
 }
