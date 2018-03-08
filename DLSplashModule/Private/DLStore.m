@@ -36,7 +36,7 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSData *splashData = [NSKeyedArchiver archivedDataWithRootObject:splashAd.json];
+    NSData *splashData = splashAd.json == nil ? nil : [NSKeyedArchiver archivedDataWithRootObject:splashAd.json];
 
     [userDefaults setObject:splashData forKey:kDLSplashAdJSONCacheKey];
     [userDefaults setObject:splashAd.imageFileName forKey:kDLSplashAdImageFileNameCacheKey];
@@ -47,22 +47,29 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 
-    NSData *splashData = [userDefaults objectForKey:kDLSplashAdJSONCacheKey];
-    NSDictionary *json = (NSDictionary*)[NSKeyedUnarchiver unarchiveObjectWithData:splashData];
-
+    NSData *splashData = (NSData *)[userDefaults objectForKey:kDLSplashAdJSONCacheKey];
     NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
 
-    DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
+    if (splashData && imageFileName) {
+        NSDictionary *json = nil;
+        NSObject *dataObject = [NSKeyedUnarchiver unarchiveObjectWithData:splashData];
 
-    if (imageFileName) {
+        if (dataObject && [dataObject isKindOfClass:[NSDictionary class]]) {
+            json = (NSDictionary*)dataObject;
+        }
+
+        DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
+
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSURL *cachesURL = [[fileManager URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] firstObject];
         NSURL *fileURL = [cachesURL URLByAppendingPathComponent:imageFileName];
         cachedSplashAd.imageFileName = imageFileName;
         cachedSplashAd.image = [self imageAtLocation:fileURL];
+
+        return cachedSplashAd;
     }
 
-    return cachedSplashAd;
+    return nil;
 }
 
 - (void)clearCache

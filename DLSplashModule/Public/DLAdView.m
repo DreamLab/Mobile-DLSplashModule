@@ -150,7 +150,9 @@ static const NSInteger kMaxSizeOfImageView = 150;
 
 - (void)splashScreenShouldBeClosed
 {
-    [self.delegate splashScreenShouldBeClosed];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.delegate splashScreenShouldBeClosed];
+    });
 }
 
 @end
