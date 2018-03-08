@@ -93,10 +93,11 @@
 
     NSError *parsingError;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&parsingError];
+    NSData *splashData = [NSKeyedArchiver archivedDataWithRootObject:json];
 
     XCTAssertNil(parsingError, @"Parsing error should be nil");
 
-    OCMVerify([self.userDefaults setObject:json forKey:kDLSplashAdJSONCacheKey]);
+    OCMVerify([self.userDefaults setObject:splashData forKey:kDLSplashAdJSONCacheKey]);
     OCMVerify([self.userDefaults setObject:[OCMArg any] forKey:kDLSplashAdImageFileNameCacheKey]);
     OCMVerify([self.userDefaults synchronize]);
 }
@@ -106,9 +107,10 @@
     NSData *jsonData = [DLTestingHelper dataFromJSONFileNamed:@"std"];
     NSError *parsingError;
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&parsingError];
+    NSData *splashData = [NSKeyedArchiver archivedDataWithRootObject:json];
     XCTAssertNil(parsingError, @"Parsing error should be nil");
 
-    OCMStub([self.userDefaults objectForKey:kDLSplashAdJSONCacheKey]).andReturn(json);
+    OCMStub([self.userDefaults objectForKey:kDLSplashAdJSONCacheKey]).andReturn(splashData);
     OCMStub([self.userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey]).andReturn(@"fileName");
 
     [self.store cachedSplashAd];

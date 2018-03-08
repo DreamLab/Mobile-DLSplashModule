@@ -170,16 +170,20 @@ static DLSplashModule* sharedInstance;
 
 - (void)notifyDelegatesSplashScreenShouldDisplayAd
 {
-    for (id<DLSplashModuleDelegate> delegate in self.delegates) {
-        [delegate splashScreenShouldDisplayAd];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (id<DLSplashModuleDelegate> delegate in self.delegates) {
+            [delegate splashScreenShouldDisplayAd];
+        }
+    });
 }
 
 - (void)notifyDelegatesSplashScreenShouldBeClosed
 {
-    for (id<DLSplashModuleDelegate> delegate in self.delegates) {
-        [delegate splashScreenShouldBeClosed];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        for (id<DLSplashModuleDelegate> delegate in self.delegates) {
+            [delegate splashScreenShouldBeClosed];
+        }
+    });
 }
 
 #pragma mark - Timers
