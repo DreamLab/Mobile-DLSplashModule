@@ -171,7 +171,8 @@ static DLSplashModule* sharedInstance;
 - (void)notifyDelegatesSplashScreenShouldDisplayAd
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        for (id<DLSplashModuleDelegate> delegate in self.delegates) {
+        NSArray *delegates = self.delegates.allObjects;
+        for (id<DLSplashModuleDelegate> delegate in delegates) {
             [delegate splashScreenShouldDisplayAd];
         }
     });
@@ -180,7 +181,8 @@ static DLSplashModule* sharedInstance;
 - (void)notifyDelegatesSplashScreenShouldBeClosed
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        for (id<DLSplashModuleDelegate> delegate in self.delegates) {
+        NSArray *delegates = self.delegates.allObjects;
+        for (id<DLSplashModuleDelegate> delegate in delegates) {
             [delegate splashScreenShouldBeClosed];
         }
     });
