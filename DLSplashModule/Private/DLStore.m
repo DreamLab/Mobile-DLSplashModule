@@ -35,8 +35,11 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (void)cacheSplashAd:(DLSplashAd *)splashAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    NSData *splashData = nil;
 
-    NSData *splashData = splashAd.json == nil ? nil : [NSKeyedArchiver archivedDataWithRootObject:splashAd.json];
+    if (splashAd.json) {
+        splashData = [NSJSONSerialization dataWithJSONObject:splashAd.json options:NSJSONWritingPrettyPrinted error:nil];
+    }
 
     [userDefaults setObject:splashData forKey:kDLSplashAdJSONCacheKey];
     [userDefaults setObject:splashAd.imageFileName forKey:kDLSplashAdImageFileNameCacheKey];
@@ -46,18 +49,16 @@ NSString * const kDLSplashQueuedTrackingLinksCacheKey = @"com.dreamlab.splash_sc
 - (DLSplashAd *)cachedSplashAd
 {
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-
     NSData *splashData = (NSData *)[userDefaults objectForKey:kDLSplashAdJSONCacheKey];
     NSString *imageFileName = [userDefaults objectForKey:kDLSplashAdImageFileNameCacheKey];
 
-    if (splashData && imageFileName) {
-        NSDictionary *json = nil;
-        NSObject *dataObject = [NSKeyedUnarchiver unarchiveObjectWithData:splashData];
+    NSDictionary *json = nil;
 
-        if (dataObject && [dataObject isKindOfClass:[NSDictionary class]]) {
-            json = (NSDictionary*)dataObject;
-        }
+    if (splashData && [splashData isKindOfClass:[NSData class]]) {
+        json = [NSJSONSerialization JSONObjectWithData:splashData options:NSJSONReadingAllowFragments error:nil];
+    }
 
+    if (json && imageFileName && [json isKindOfClass:[NSDictionary class]]) {
         DLSplashAd *cachedSplashAd = [[DLSplashAd alloc] initWithJSONDictionary:json];
 
         NSFileManager *fileManager = [NSFileManager defaultManager];

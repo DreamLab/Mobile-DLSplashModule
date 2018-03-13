@@ -91,13 +91,7 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:jsonData];
     [self.store cacheSplashAd:splashAd];
 
-    NSError *parsingError;
-    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:jsonData options:kNilOptions error:&parsingError];
-    NSData *splashData = [NSKeyedArchiver archivedDataWithRootObject:json];
-
-    XCTAssertNil(parsingError, @"Parsing error should be nil");
-
-    OCMVerify([self.userDefaults setObject:splashData forKey:kDLSplashAdJSONCacheKey]);
+    OCMVerify([self.userDefaults setObject:[OCMArg any] forKey:kDLSplashAdJSONCacheKey]);
     OCMVerify([self.userDefaults setObject:[OCMArg any] forKey:kDLSplashAdImageFileNameCacheKey]);
     OCMVerify([self.userDefaults synchronize]);
 }
