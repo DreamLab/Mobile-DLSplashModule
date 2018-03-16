@@ -124,6 +124,12 @@ static DLSplashModule* sharedInstance;
             [webService fetchImageAtURL:splashAd.imageURL numberOfRetries:kMaxNumberOfFetchingImageRetries completion:^(UIImage *image, NSURL *imageLocation, NSError *error) {
                 if (error) {
                     NSLog(@"Error occured: %@", error);
+                    [self waitingForDataFinished];
+                    return;
+                }
+                if (!image) {
+                    NSLog(@"Downloaded image is corrupted.");
+                    [self waitingForDataFinished];
                     return;
                 }
                 splashAd.image = image;
