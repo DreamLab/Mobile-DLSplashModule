@@ -58,7 +58,6 @@
     OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
-    OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
 
     [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
@@ -78,7 +77,6 @@
     OCMStub([self.webService fetchImageAtURL:[OCMArg any] numberOfRetries:3 completion:([OCMArg invokeBlockWithArgs:[NSNull null], [NSNull null], [NSNull null], nil])]);
 
     OCMExpect([self.delegate splashScreenShouldDisplayAd]);
-    OCMExpect([self.store cacheSplashAd:[OCMArg any]]);
 
     [self.splashModule adViewDidShow:nil]; // this call is required to enable timer
     [self.splashModule fetchSplashAdWithWebService:self.webService store:self.store];
