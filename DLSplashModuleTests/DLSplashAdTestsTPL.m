@@ -15,6 +15,7 @@
 @property (nonatomic, strong) NSData *correctJSONData;
 @property (nonatomic, strong) NSData *wrongJSONData;
 @property (nonatomic, strong) NSData *emptyJSONData;
+@property (nonatomic, strong) NSData *nullLinksJSONData;
 
 @end
 
@@ -27,6 +28,7 @@
     self.correctJSONData = [DLTestingHelper dataFromJSONFileNamed:@"tpl"];
     self.wrongJSONData = [DLTestingHelper dataFromJSONFileNamed:@"tpl_wrong"];
     self.emptyJSONData = [DLTestingHelper dataFromJSONFileNamed:@"empty"];
+    self.nullLinksJSONData = [DLTestingHelper dataFromJSONFileNamed:@"tpl_null_links"];
 }
 
 - (void)tearDown
@@ -34,6 +36,7 @@
     self.correctJSONData = nil;
     self.wrongJSONData = nil;
     self.emptyJSONData = nil;
+    self.nullLinksJSONData = nil;
 
     [super tearDown];
 }
@@ -137,6 +140,13 @@
     DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:nil];
 
     XCTAssertNil(splashAd, @"Splash Ad should be nil");
+}
+
+- (void)testInitWithJSONData_givenCorrectJSONDataWithNullLinks_splashAdShouldNotBeNil
+{
+    DLSplashAd *splashAd = [[DLSplashAd alloc] initWithJSONData:self.nullLinksJSONData];
+
+    XCTAssertNotNil(splashAd, @"Splash Ad should not be nil");
 }
 
 @end
