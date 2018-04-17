@@ -1,0 +1,44 @@
+{
+    "geoloc": {
+        "P": 31,
+        "R": 18
+    },
+    "ads": [{
+            "meta": {
+            "eligible": false,
+            "server": "das"
+            },
+            "adid": "das,18121,43181",
+            "prio": 10,
+            "type": "tpl",
+            "data": {
+            "meta": {
+            "adid": "das,18121,43181",
+            "height": 95,
+            "container_wrapper": "",
+            "actioncount": null,
+            "width": 150,
+            "inIFrame": true,
+            "adclick": null,
+            "ver": "20180227120249",
+            "slot": "splash"
+            },
+            "tplCode": "lps/Splash-Aplikacji",
+            "fields": {
+            "audit2": null,
+            "image": "https://ocdn.eu/lps/1746213/creative/000/000043/000043181/300x150_splash_aplikacji.jpg",
+            "font_color": "#91a21a",
+            "time": "4",
+            "click": "http://www.piwniczanka.pl",
+            "txt": "Partner aplikacji",
+            "audit": null
+            }
+            },
+            "width": 150,
+            "height": 95,
+            "slot": "splash",
+            "id": "splash"
+            }],
+    "adsCheck": "ok"
+}
+

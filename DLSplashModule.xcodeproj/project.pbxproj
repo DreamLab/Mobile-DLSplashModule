@@ -32,6 +32,8 @@
 		71C020B61C734F1200CF6981 /* std_wrong.json in Resources */ = {isa = PBXBuildFile; fileRef = 71C020B31C734F1200CF6981 /* std_wrong.json */; };
 		71F841B11C723770003CF0E4 /* DLSplashAdTestsSTD.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B01C723770003CF0E4 /* DLSplashAdTestsSTD.m */; };
 		71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 71F841B41C723A57003CF0E4 /* DLTestingHelper.m */; };
+		7DBC348E2084CCCE0039AA27 /* tpl_null_links.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC348D2084CCCE0039AA27 /* tpl_null_links.json */; };
+		7DBC34902084CE020039AA27 /* std_null_links.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DBC348F2084CE020039AA27 /* std_null_links.json */; };
 		7DE741A620457ACD00E65803 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DE741A520457ACD00E65803 /* UIColor+Hex.m */; };
 		7DE741A820458A6300E65803 /* tpl.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE741A720458A6300E65803 /* tpl.json */; };
 		7DE741AF20458ABD00E65803 /* std.json in Resources */ = {isa = PBXBuildFile; fileRef = 7DE741AD20458ABD00E65803 /* std.json */; };
@@ -98,6 +100,8 @@
 		71F841B41C723A57003CF0E4 /* DLTestingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLTestingHelper.m; sourceTree = "<group>"; };
 		7D2EA5D520457144006AE523 /* DLSplashModuleCode.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DLSplashModuleCode.podspec; sourceTree = "<group>"; };
 		7D458A8F1EA6197C004A43BC /* CHANGELOG */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CHANGELOG; sourceTree = "<group>"; };
+		7DBC348D2084CCCE0039AA27 /* tpl_null_links.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tpl_null_links.json; path = "Unit Tests Data/tpl_null_links.json"; sourceTree = "<group>"; };
+		7DBC348F2084CE020039AA27 /* std_null_links.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = std_null_links.json; path = "Unit Tests Data/std_null_links.json"; sourceTree = "<group>"; };
 		7DE741A420457ACD00E65803 /* UIColor+Hex.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		7DE741A520457ACD00E65803 /* UIColor+Hex.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		7DE741A720458A6300E65803 /* tpl.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = tpl.json; path = "Unit Tests Data/tpl.json"; sourceTree = "<group>"; };
@@ -176,8 +180,10 @@
 				7DE741AE20458ABD00E65803 /* empty.json */,
 				7DE741AD20458ABD00E65803 /* std.json */,
 				71C020B31C734F1200CF6981 /* std_wrong.json */,
+				7DBC348F2084CE020039AA27 /* std_null_links.json */,
 				7DE741A720458A6300E65803 /* tpl.json */,
 				7DE741B120458ACC00E65803 /* tpl_wrong.json */,
+				7DBC348D2084CCCE0039AA27 /* tpl_null_links.json */,
 			);
 			name = "Unit Tests Data";
 			sourceTree = "<group>";
@@ -338,9 +344,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7DBC34902084CE020039AA27 /* std_null_links.json in Resources */,
 				7DE741A820458A6300E65803 /* tpl.json in Resources */,
 				7DE741B020458ABD00E65803 /* empty.json in Resources */,
 				71C020B61C734F1200CF6981 /* std_wrong.json in Resources */,
+				7DBC348E2084CCCE0039AA27 /* tpl_null_links.json in Resources */,
 				7DE741AF20458ABD00E65803 /* std.json in Resources */,
 				7DE741B220458ACC00E65803 /* tpl_wrong.json in Resources */,
 			);
