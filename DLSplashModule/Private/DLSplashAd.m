@@ -62,16 +62,16 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    _imageURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"image"]];
+    _imageURL = [DLSplashAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"image"]];
     _imageWidth = [firstElement[@"data"][@"meta"][@"width"] doubleValue];
     _imageHeight = [firstElement[@"data"][@"meta"][@"height"] doubleValue];
-    _auditURL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit"]];
-    _audit2URL = [NSURL URLWithString:firstElement[@"data"][@"fields"][@"audit2"]];
+    _auditURL = [DLSplashAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"audit"]];
+    _audit2URL = [DLSplashAd nsurlFromUnknownValue:firstElement[@"data"][@"fields"][@"audit2"]];
 
     NSString *clickUrlString = [NSString stringWithFormat:@"%@%@",
                                 firstElement[@"data"][@"meta"][@"adclick"],
                                 firstElement[@"data"][@"fields"][@"click"]];
-    _clickURL = [NSURL URLWithString:clickUrlString];
+    _clickURL = [DLSplashAd nsurlFromUnknownValue:clickUrlString];
     _actionCount = firstElement[@"data"][@"meta"][@"actioncount"];
 
     _version = firstElement[@"data"][@"meta"][@"ver"];
@@ -81,7 +81,7 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     NSString *textColor = firstElement[@"data"][@"fields"][@"font_color"];
     _textColor = [UIColor colorFromHexString:textColor];
 
-    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version && _text && _time) {
+    if (_imageURL && _imageWidth && _imageHeight && _version && _text && _time) {
         _empty = false;
     } else {
         _empty = true;
@@ -111,18 +111,18 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
         return nil;
     }
 
-    _imageURL = [NSURL URLWithString:htmlDictionary[@"image"]];
+    _imageURL = [DLSplashAd nsurlFromUnknownValue:htmlDictionary[@"image"]];
     _imageWidth = [htmlDictionary[@"width"] doubleValue];
     _imageHeight = [htmlDictionary[@"height"] doubleValue];
-    _auditURL = [NSURL URLWithString:htmlDictionary[@"audit"]];
-    _audit2URL = [NSURL URLWithString:htmlDictionary[@"audit2"]];
-    _clickURL = [NSURL URLWithString:htmlDictionary[@"click"]];
+    _auditURL = [DLSplashAd nsurlFromUnknownValue:htmlDictionary[@"audit"]];
+    _audit2URL = [DLSplashAd nsurlFromUnknownValue:htmlDictionary[@"audit2"]];
+    _clickURL = [DLSplashAd nsurlFromUnknownValue:htmlDictionary[@"click"]];
     _text = htmlDictionary[@"txt"];
     _time = [htmlDictionary[@"time"] doubleValue];
     _textColor = nil;
     _version = [NSString stringWithFormat:@"%@", htmlDictionary[@"ver"]];
 
-    if (_imageURL && _imageWidth && _imageHeight && _auditURL && _audit2URL && _clickURL && _version && _text && _time) {
+    if (_imageURL && _imageWidth && _imageHeight && _version && _text && _time) {
         _empty = false;
     } else {
         _empty = true;
@@ -185,6 +185,16 @@ NSString * const kSplashScreenPersisteStoreKey = @"com.dreamlab.splash_screen.pe
     NSDictionary *firstElement = [((NSArray *)json[@"ads"]) firstObject];
 
     return firstElement[@"type"];
+}
+
++ (NSURL *)nsurlFromUnknownValue:(NSObject *)value {
+    NSURL *result = nil;
+
+    if (![value isKindOfClass:[NSNull class]] && [value isKindOfClass:[NSString class]] && [((NSString *)value) length] > 0 ) {
+        result = [NSURL URLWithString:(NSString *)value];
+    }
+
+    return result;
 }
 
 @end
