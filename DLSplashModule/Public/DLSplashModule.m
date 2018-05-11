@@ -12,6 +12,7 @@
 #import "DLSplashModuleDelegate.h"
 #import "DLSplashScreenWebService.h"
 #import "DLStore.h"
+#import "DLSplashConsentParams.h"
 
 static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 
@@ -24,6 +25,7 @@ static const NSTimeInterval kMaxNumberOfFetchingImageRetries = 3;
 @property (nonatomic, strong) DLSplashAd *splashAd;
 @property (nonatomic, strong) DLAdView *generatedAdView;
 @property (nonatomic, strong) DLSplashScreenWebService *webService;
+@property (nonatomic, strong) DLSplashConsentParams *consentParams;
 
 @end
 
@@ -33,37 +35,47 @@ static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
 + (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration
+                              consentParams:(DLSplashConsentParams * _Nonnull)consentParams
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
     });
 
     sharedInstance.configuration = configuration;
+    sharedInstance.consentParams = consentParams;
     [sharedInstance initializeSplashAd];
 
     return sharedInstance;
 }
 
-+ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion
++ (instancetype)initializeWithSite:(NSString *)site
+                        appVersion:(NSString *)appVersion
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
 {
     return [DLSplashModule initializeWithSite:site
                                          area:kSplashScreenDefaultArea
                                    appVersion:appVersion
-                                         slot:kSplashScreenDefaultSlot];
+                                         slot:kSplashScreenDefaultSlot
+                                consentParams:consentParams];
 }
 
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion
++ (instancetype)initializeWithSite:(NSString *)site
+                              area:(NSString *)area
+                        appVersion:(NSString *)appVersion
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
 {
     return [DLSplashModule initializeWithSite:site
                                          area:area
-                                         appVersion:appVersion
-                                         slot:kSplashScreenDefaultSlot];
+                                   appVersion:appVersion
+                                         slot:kSplashScreenDefaultSlot
+                                consentParams:consentParams];
 }
 
 + (instancetype)initializeWithSite:(NSString *)site
                               area:(NSString *)area
                               appVersion:(NSString *)appVersion
                               slot:(NSString *)slot
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
 {
     DLSplashModuleConfiguration *configuration = [[DLSplashModuleConfiguration alloc] init];
     configuration.site = site;
@@ -71,7 +83,7 @@ static DLSplashModule* sharedInstance;
     configuration.appVersion = appVersion;
     configuration.slot = slot;
 
-    return [DLSplashModule initializeWithConfiguration:configuration];
+    return [DLSplashModule initializeWithConfiguration:configuration consentParams:consentParams];
 }
 
 + (instancetype)sharedInstance
@@ -95,8 +107,9 @@ static DLSplashModule* sharedInstance;
 
     self.webService = [[DLSplashScreenWebService alloc] initWithSite:self.configuration.site
                                                                 area:self.configuration.area
-                                                                appVersion:self.configuration.appVersion
-                                                                slot:self.configuration.slot];
+                                                          appVersion:self.configuration.appVersion
+                                                                slot:self.configuration.slot
+                                                       consentParams:self.consentParams];
 
     [self fetchSplashAdWithWebService:self.webService store:store];
 }

@@ -22,6 +22,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0C48C7BF20A5DABA0037E804 /* DLSplashConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */; };
+		0C48C7C020A5DE470037E804 /* DLSplashConsentParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */; };
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSplashAd.m */; };
@@ -67,6 +69,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				0C48C7C020A5DE470037E804 /* DLSplashConsentParams.h in CopyFiles */,
 				7E59EDD71D92A671002B61E3 /* DLSplashModuleConfiguration.h in CopyFiles */,
 				CA2F869F1E37649F00A47EC0 /* DLSplashModuleDelegate.h in CopyFiles */,
 				874529911C8072AB00747C55 /* DLAdView.h in CopyFiles */,
@@ -78,6 +81,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLSplashConsentParams.h; path = "../../../ios-splashmodule/DLSplashModule/Public/DLSplashConsentParams.h"; sourceTree = "<group>"; };
+		0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DLSplashConsentParams.m; path = "../../../ios-splashmodule/DLSplashModule/Public/DLSplashConsentParams.m"; sourceTree = "<group>"; };
+		0C48C7C120A5ED810037E804 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VERSION; path = "../ios-splashmodule/VERSION"; sourceTree = "<group>"; };
 		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
 		7170B75A1C80550600DC020B /* DLStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLStoreTests.m; sourceTree = "<group>"; };
 		71BAF1031C7F703500D4BB7F /* DLSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DLSplashAd.h; sourceTree = "<group>"; };
@@ -166,6 +172,8 @@
 				71BAF1101C7F703500D4BB7F /* DLSplashModule.m */,
 				7E59EDCC1D92A3FF002B61E3 /* DLSplashModuleConfiguration.h */,
 				7E59EDCD1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m */,
+				0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */,
+				0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -194,6 +202,7 @@
 		872C68D61C74BDA7006064FD /* Podfile metadata */ = {
 			isa = PBXGroup;
 			children = (
+				0C48C7C120A5ED810037E804 /* VERSION */,
 				7D458A8F1EA6197C004A43BC /* CHANGELOG */,
 				7D2EA5D520457144006AE523 /* DLSplashModuleCode.podspec */,
 				872C68D71C74BE44006064FD /* DLSplashModule.podspec */,
@@ -386,6 +395,7 @@
 				71BAF1131C7F703500D4BB7F /* DLStore.m in Sources */,
 				71BAF1141C7F703500D4BB7F /* DLAdView.m in Sources */,
 				71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */,
+				0C48C7BF20A5DABA0037E804 /* DLSplashConsentParams.m in Sources */,
 				7DE741A620457ACD00E65803 /* UIColor+Hex.m in Sources */,
 				71BAF1121C7F703500D4BB7F /* DLSplashScreenWebService.m in Sources */,
 				7E59EDCE1D92A3FF002B61E3 /* DLSplashModuleConfiguration.m in Sources */,
