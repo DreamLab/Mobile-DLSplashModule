@@ -14,6 +14,7 @@
 #import "DLSplashScreenWebService.h"
 #import "DLSplashAd.h"
 #import "DLTestingHelper.h"
+#import "DLSplashConsentParams.h"
 
 #pragma mark - DLSplashScreenWebService category
 
@@ -34,7 +35,9 @@
 - (void)setUp {
     [super setUp];
 
-    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"ver=1.0" slot:@"slot0"];
+    DLSplashConsentParams *consentParams = [[DLSplashConsentParams alloc] initWithPubConsent:@"1" adpConsent:@"2" euConsent:@"3"];
+
+    self.webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"ver=1.0" slot:@"slot0" consentParams:consentParams];
 
     self.session = OCMClassMock([NSURLSession class]);
     OCMStub([self.session sharedSession]).andReturn(self.session);
@@ -48,24 +51,30 @@
 
 - (void)testInitWithSiteArea_givenProperParameters_instanceShouldNotBeNilAndURLisGeneratedProperly
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"1.0" slot:@"slot_example"];
+    DLSplashConsentParams *consentParams = [[DLSplashConsentParams alloc] initWithPubConsent:@"1" adpConsent:@"2" euConsent:@"3"];
+
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"appsite_example" area:@"area_example" appVersion:@"1.0" slot:@"slot_example" consentParams:consentParams];
 
     XCTAssertNotNil(webService, @"webservice instance should not be nil");
 
-    NSRange range = [webService.url.absoluteString rangeOfString:@"https://csr.onet.pl/_s/csr-006/csr.json?site=appsite_example&area=area_example&slot0=slot_example&ver=1.0&kvkwrd=cs006r&DI="];
+    NSRange range = [webService.url.absoluteString rangeOfString:@"https://csr.onet.pl/_s/csr-006/csr.json?site=appsite_example&area=area_example&slot0=slot_example&ver=1.0&pubconsent=1&adpconsent=2&euconsent=3&kvkwrd=cs006r&DI="];
     XCTAssertTrue(range.length > 0, @"URL should be generated properly");
 }
 
 - (void)testInitWithSiteArea_givenNilAsParameters_instanceShouldBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:nil area:nil appVersion:nil slot:nil];
+    DLSplashConsentParams *consentParams = [[DLSplashConsentParams alloc] initWithPubConsent:@"1" adpConsent:@"2" euConsent:@"3"];
+
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:nil area:nil appVersion:nil slot:nil consentParams:consentParams];
 
     XCTAssertNil(webService, @"webservice instance should be nil");
 }
 
 - (void)testInitWithSiteArea_givenEmptyStringAsParameters_instanceShouldBeNil
 {
-    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@"" appVersion:@"" slot:@""];
+    DLSplashConsentParams *consentParams = [[DLSplashConsentParams alloc] initWithPubConsent:@"1" adpConsent:@"2" euConsent:@"3"];
+
+    DLSplashScreenWebService *webService = [[DLSplashScreenWebService alloc] initWithSite:@"" area:@"" appVersion:@"" slot:@"" consentParams:consentParams];
 
     XCTAssertNil(webService, @"webservice instance should be nil");
 }
