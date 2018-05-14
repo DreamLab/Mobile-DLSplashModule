@@ -10,6 +10,7 @@
 @import UIKit;
 #import "DLAdView.h"
 #import "DLSplashModuleDelegate.h"
+#import "DLSplashConsentParams.h"
 
 @class DLSplashModuleConfiguration;
 @class DLSplashAd;
@@ -27,44 +28,58 @@ Module responsible for providing ads for splash screen.
 /**
  *  Initialize module with the configuration
  *
- *  @param configuration DLSplashModule configuration
+ *  @param configuration    DLSplashModule configuration
+ *  @param consentParams    DLSplashConsentParams object.
  *
  *  @return Instance of initialized DLSplashModuleConfiguration
  */
-+ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration;
++ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration
+                              consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site        the site URL parameter
- @param appVersion  the version number of the app
+ @param site            the site URL parameter
+ @param appVersion      the version number of the app
+ @param consentParams   DLSplashConsentParams object.
 
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site appVersion:(NSString *)appVersion;
++ (instancetype)initializeWithSite:(NSString *)site
+                        appVersion:(NSString *)appVersion
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
 
- @param site        the site URL parameter
- @param area        the area URL parameter
- @param appVersion  the version number of the app
+ @param site            the site URL parameter
+ @param area            the area URL parameter
+ @param appVersion      the version number of the app
+ @param consentParams   DLSplashConsentParams object.
  
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion;
++ (instancetype)initializeWithSite:(NSString *)site
+                              area:(NSString *)area
+                        appVersion:(NSString *)appVersion
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
 
 /**
  *   Initializes module with the site, area and slots parameter. It initialize the shared instance. Should be called before first use.
  *
- *  @param site     the site URL parameter
- *  @param area     the area URL parameter
- *  @param appVersion  the version number of the app
- *  @param slot     the slot URL parameter
+ *  @param site             the site URL parameter
+ *  @param area             the area URL parameter
+ *  @param appVersion       the version number of the app
+ *  @param slot             the slot URL parameter
+ *  @param consentParams    DLSplashConsentParams object.
  *
  *  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
++ (instancetype)initializeWithSite:(NSString *)site
+                              area:(NSString *)area
+                        appVersion:(NSString *)appVersion
+                              slot:(NSString *)slot
+                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 

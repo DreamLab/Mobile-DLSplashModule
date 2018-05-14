@@ -14,8 +14,9 @@
 #import "DLSplashModuleConfiguration.h"
 #import "DLSplashAd.h"
 #import "DLStore.h"
+#import "DLSplashConsentParams.h"
 
-NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.json?site=%@&area=%@&slot0=%@&ver=%@";
+NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.json?site=%@&area=%@&slot0=%@&ver=%@&pubconsent=%@&adpconsent=%@&euconsent=%@";
 
 @interface DLSplashScreenWebService ()
 
@@ -25,7 +26,11 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
 
 @implementation DLSplashScreenWebService
 
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                  appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot
+               consentParams:(DLSplashConsentParams * _Nonnull)consentParams
 {
     self = [super init];
 
@@ -34,7 +39,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
     }
 
     // Base url with params
-    NSMutableString *urlString = [NSMutableString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion, consentParams.pubConsent, consentParams.adpConsent, consentParams.euConsent];
 
     // Apppend csr keyword
     [urlString appendString:@"&kvkwrd=cs006r"];

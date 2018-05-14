@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class DLSplashAd;
+@class DLSplashConsentParams;
 
 /**
  *  Class to fetch data from server
@@ -18,13 +19,19 @@
 /**
  *  Designated initializer.
  *
- *  @param site         Site URL parameter.
- *  @param area         Area URL parameter.
- *  @param slot         Slot URL parameter.
+ *  @param site             Site URL parameter.
+ *  @param area             Area URL parameter.
+ *  @param appVersion       Application version.
+ *  @param slot             Slot URL parameter.
+ *  @param consentParams    DLSplashConsentParams object.
  *
  *  @return Instance of DLSplashScreenWebService with URL to webservice.
  */
-- (instancetype)initWithSite:(NSString *)site area:(NSString *)area appVersion:(NSString *)appVersion slot:(NSString *)slot;
+- (instancetype)initWithSite:(NSString *)site
+                        area:(NSString *)area
+                  appVersion:(NSString *)appVersion
+                        slot:(NSString *)slot
+               consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
 
 /**
  *  Fetch data from server.
