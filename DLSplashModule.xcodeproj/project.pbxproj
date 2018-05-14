@@ -24,6 +24,7 @@
 /* Begin PBXBuildFile section */
 		0C48C7BF20A5DABA0037E804 /* DLSplashConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */; };
 		0C48C7C020A5DE470037E804 /* DLSplashConsentParams.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */; };
+		0C48C7C220A9B1C40037E804 /* DLSplashConsentParams.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */; };
 		710D22251C7F04A200025D53 /* DLSplashScreenWebServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */; };
 		7170B75B1C80550600DC020B /* DLStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7170B75A1C80550600DC020B /* DLStoreTests.m */; };
 		71BAF1111C7F703500D4BB7F /* DLSplashAd.m in Sources */ = {isa = PBXBuildFile; fileRef = 71BAF1041C7F703500D4BB7F /* DLSplashAd.m */; };
@@ -414,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C48C7C220A9B1C40037E804 /* DLSplashConsentParams.m in Sources */,
 				7DE741B420458B1800E65803 /* DLSplashAdTestsTPL.m in Sources */,
 				71F841B51C723A57003CF0E4 /* DLTestingHelper.m in Sources */,
 				8745298F1C7F179B00747C55 /* DLAdViewTests.m in Sources */,
