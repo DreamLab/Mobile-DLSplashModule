@@ -8,10 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ Parameters required for passing User Consents over to DAS Server
+ */
 @interface DLSplashConsentParams : NSObject
 
+/**
+ PUB Consent
+ */
 @property (nonatomic, strong, readonly) NSString *pubConsent;
+
+/**
+ ADP Consent
+ */
 @property (nonatomic, strong, readonly) NSString *adpConsent;
+
+/**
+ EU Consent
+ */
 @property (nonatomic, strong, readonly) NSString *euConsent;
 
 /**
