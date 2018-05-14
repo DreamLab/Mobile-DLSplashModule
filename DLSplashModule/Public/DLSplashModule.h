@@ -10,10 +10,10 @@
 @import UIKit;
 #import "DLAdView.h"
 #import "DLSplashModuleDelegate.h"
+#import "DLSplashConsentParams.h"
 
 @class DLSplashModuleConfiguration;
 @class DLSplashAd;
-@class DLSplashConsentParams;
 
 /**
 Module responsible for providing ads for splash screen.
