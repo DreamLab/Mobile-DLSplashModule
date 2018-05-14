@@ -83,7 +83,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DLSplashConsentParams.h; path = "../../../ios-splashmodule/DLSplashModule/Public/DLSplashConsentParams.h"; sourceTree = "<group>"; };
+		0C48C7BD20A5DABA0037E804 /* DLSplashConsentParams.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DLSplashConsentParams.h; sourceTree = "<group>"; };
 		0C48C7BE20A5DABA0037E804 /* DLSplashConsentParams.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DLSplashConsentParams.m; sourceTree = "<group>"; };
 		0C48C7C120A5ED810037E804 /* VERSION */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = VERSION; path = "../ios-splashmodule/VERSION"; sourceTree = "<group>"; };
 		710D22241C7F04A200025D53 /* DLSplashScreenWebServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DLSplashScreenWebServiceTests.m; sourceTree = "<group>"; };
