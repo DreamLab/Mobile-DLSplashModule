@@ -18,9 +18,9 @@
 
 @implementation DLSplashConsentParams
 
-- (instancetype _Nonnull)initWithPubConsent:(NSString* _Nonnull)pubConsent
-                                 adpConsent:(NSString* _Nonnull)adpConsent
-                                  euConsent:(NSString* _Nonnull)euConsent
+- (instancetype _Nonnull)initWithPubConsent:(NSString*)pubConsent
+                                 adpConsent:(NSString*)adpConsent
+                                  euConsent:(NSString*)euConsent
 {
     self = [super init];
     if (self) {
