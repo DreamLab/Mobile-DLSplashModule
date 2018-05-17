@@ -30,7 +30,7 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
                         area:(NSString *)area
                   appVersion:(NSString *)appVersion
                         slot:(NSString *)slot
-               consentParams:(DLSplashConsentParams * _Nonnull)consentParams
+               consentParams:(DLSplashConsentParams *)consentParams
 {
     self = [super init];
 
@@ -39,7 +39,14 @@ NSString * const kSplashScreenBaseURL = @"https://csr.onet.pl/_s/csr-006/csr.jso
     }
 
     // Base url with params
-    NSMutableString *urlString = [NSMutableString stringWithFormat:kSplashScreenBaseURL, site, area, slot, appVersion, consentParams.pubConsent, consentParams.adpConsent, consentParams.euConsent];
+    NSMutableString *urlString = [NSMutableString stringWithFormat:kSplashScreenBaseURL,
+                                  site,
+                                  area,
+                                  slot,
+                                  appVersion,
+                                  consentParams.pubConsent ? consentParams.pubConsent : @"",
+                                  consentParams.adpConsent ? consentParams.adpConsent : @"",
+                                  consentParams.euConsent ? consentParams.euConsent : @""];
 
     // Apppend csr keyword
     [urlString appendString:@"&kvkwrd=cs006r"];

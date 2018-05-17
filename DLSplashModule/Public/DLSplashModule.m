@@ -35,7 +35,7 @@ static dispatch_once_t once;
 static DLSplashModule* sharedInstance;
 
 + (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration
-                              consentParams:(DLSplashConsentParams * _Nonnull)consentParams
+                              consentParams:(DLSplashConsentParams *)consentParams
 {
     dispatch_once(&once, ^{
         sharedInstance = [[self alloc] init];
@@ -50,7 +50,7 @@ static DLSplashModule* sharedInstance;
 
 + (instancetype)initializeWithSite:(NSString *)site
                         appVersion:(NSString *)appVersion
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
+                     consentParams:(DLSplashConsentParams *)consentParams
 {
     return [DLSplashModule initializeWithSite:site
                                          area:kSplashScreenDefaultArea
@@ -62,7 +62,7 @@ static DLSplashModule* sharedInstance;
 + (instancetype)initializeWithSite:(NSString *)site
                               area:(NSString *)area
                         appVersion:(NSString *)appVersion
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
+                     consentParams:(DLSplashConsentParams *)consentParams
 {
     return [DLSplashModule initializeWithSite:site
                                          area:area
@@ -75,7 +75,7 @@ static DLSplashModule* sharedInstance;
                               area:(NSString *)area
                               appVersion:(NSString *)appVersion
                               slot:(NSString *)slot
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams
+                     consentParams:(DLSplashConsentParams *)consentParams
 {
     DLSplashModuleConfiguration *configuration = [[DLSplashModuleConfiguration alloc] init];
     configuration.site = site;

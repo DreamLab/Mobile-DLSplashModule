@@ -33,8 +33,8 @@ Module responsible for providing ads for splash screen.
  *
  *  @return Instance of initialized DLSplashModuleConfiguration
  */
-+ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration *)configuration
-                              consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
++ (instancetype)initializeWithConfiguration:(DLSplashModuleConfiguration * _Nonnull)configuration
+                              consentParams:(DLSplashConsentParams * _Nullable)consentParams;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
@@ -45,9 +45,9 @@ Module responsible for providing ads for splash screen.
 
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site
-                        appVersion:(NSString *)appVersion
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
++ (instancetype)initializeWithSite:(NSString * _Nonnull)site
+                        appVersion:(NSString * _Nonnull)appVersion
+                     consentParams:(DLSplashConsentParams * _Nullable)consentParams;
 
 /**
  Initializes module with the site parameter. It initialize the shared instance. Should be called before first use.
@@ -59,10 +59,10 @@ Module responsible for providing ads for splash screen.
  
  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site
-                              area:(NSString *)area
-                        appVersion:(NSString *)appVersion
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
++ (instancetype)initializeWithSite:(NSString * _Nonnull)site
+                              area:(NSString * _Nonnull)area
+                        appVersion:(NSString * _Nonnull)appVersion
+                     consentParams:(DLSplashConsentParams * _Nullable)consentParams;
 
 /**
  *   Initializes module with the site, area and slots parameter. It initialize the shared instance. Should be called before first use.
@@ -75,11 +75,11 @@ Module responsible for providing ads for splash screen.
  *
  *  @return Instance of initialized DLSplashModule
  */
-+ (instancetype)initializeWithSite:(NSString *)site
-                              area:(NSString *)area
-                        appVersion:(NSString *)appVersion
-                              slot:(NSString *)slot
-                     consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
++ (instancetype)initializeWithSite:(NSString * _Nonnull)site
+                              area:(NSString * _Nonnull)area
+                        appVersion:(NSString * _Nonnull)appVersion
+                              slot:(NSString * _Nonnull)slot
+                     consentParams:(DLSplashConsentParams * _Nullable)consentParams;
 
 /**
  Returns the singleton instance of the DLSplashModule class. 

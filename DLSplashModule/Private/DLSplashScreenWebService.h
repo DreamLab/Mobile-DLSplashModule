@@ -31,7 +31,7 @@
                         area:(NSString *)area
                   appVersion:(NSString *)appVersion
                         slot:(NSString *)slot
-               consentParams:(DLSplashConsentParams * _Nonnull)consentParams;
+               consentParams:(DLSplashConsentParams *)consentParams;
 
 /**
  *  Fetch data from server.
